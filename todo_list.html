@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Me</title>
+	</head>
+
+	<body>
+	<h1>$_GET</h1>
+		<?php var_dump($_GET); ?>
+	<h1>$_POST</h1>
+		<?php var_dump($_POST); ?>
+	<h2>TODO List</h2>
+	<ul>
+		<li>Go Home.</li>
+		<li>Feed the cats.</li>
+		<li>Ride the bike.</li>
+	</ul>
+	<form method="POST">
+		<p>
+			<label for="new_item">Input new Item</label>
+			<input type="text" name="new_item" id="new_item" />
+			<input type="submit">
+		</p>
+
+	</body>
+
+</html>
