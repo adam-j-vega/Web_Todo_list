@@ -1,4 +1,37 @@
 .fancy-header {
-    color: blue;
-    text-decoration: underline;
+    color: black;
+}
+
+p {
+	font-family: Helvetica;
+}
+
+h1{
+	font-family: Helvetica;
+	font-size: 1em;
+}
+
+h2{
+	font-family: Helvetica;
+	color: white;
+	background-color: black;
+	font-size: 2em;
+}
+
+ul {
+	text-align: right;
+	float: right;
+	font-size: 1em;
+
+}
+#container {
+	margin: 20px auto;
+	width: 300px;
+	padding:10px;
+}
+
+
+
+body {
+	background-color: rgb(255, 246, 204);
 }
