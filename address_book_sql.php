@@ -3,6 +3,8 @@
 // class UnexpectedTypeException extends Exception {
 // }
  
+//move php to a seperate required file.
+
 require_once "../address_book_php_pdo.php";
 
 //attempt in future * maintain pagination before going back to main page
@@ -66,16 +68,16 @@ if(!empty($_GET['page']))
 
 if(!empty($_POST))
 {
-	if(!is_int($_POST['addPhone']))
-	{
-		echo "Item must be a number";
-	}
-	elseif(!is_int($_POST['addZip']))
-	{
-		echo "Item must be a number";
-	}
-	else
-	{
+	// if(!is_int($_POST['addPhone']))
+	// {
+	// 	echo "Item must be a number";
+	// }
+	// elseif(!is_int($_POST['addZip']))
+	// {
+	// 	echo "Item must be a number";
+	// }
+	// else
+	// {
 		$stmt_1 = $dbc->prepare("INSERT INTO names (first_name, last_name, phone) VALUES (:first_name, :last_name, :phone)");
 		
 		$stmt_1->bindValue(':first_name', $_POST['addFirstname'], PDO::PARAM_STR);
@@ -92,6 +94,8 @@ if(!empty($_POST))
 		$stmt_1->execute();
 		$nameId = $dbc->lastInsertId();
 
+		//**Ben says used named paramaters
+
 		$stmt_2->execute();
 		$addressId = $dbc->lastInsertId();
 
@@ -100,7 +104,7 @@ if(!empty($_POST))
 		$dbc->query("INSERT INTO names_address (name_id, address_id) VALUES ($nameId, $addressId)");
 
 		$address_book = read_addresses_db($dbc, $offset, $items_per_page);
-	}
+	// }
 }
 
 //==============================================================================

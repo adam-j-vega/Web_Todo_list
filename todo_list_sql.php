@@ -15,7 +15,6 @@ $offset = 0;
 
 $count = (int) ($dbc->query('SELECT count(*) FROM todo_list')->fetchColumn());
 
-
 //=======================================================================
 
 //this function returns an array that will get printed out.
@@ -28,33 +27,6 @@ function getItems($dbc,$offset)
 $array = getItems($dbc,$offset);
 
 var_dump($array);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
 
 //===========================================================
 	
@@ -77,31 +49,14 @@ if (isset($_POST['additem']))
 
 			// $stmt = $dbc->prepare('INSERT INTO todo_list (list_item) VALUES (:list_item)');
 	
-
-
 			foreach($item as $key => $value)
 			{
-
-
-
 				$query = "INSERT INTO todo_list (list_item) VALUES ('{$value}')";
 
 				$dbc->exec($query);
 
 				$array = getItems($dbc, $offset);
-
-
-				// var_dump($value);
-				// $stmt->bindValue(':list_item', $value, PDO::PARAM_STR);
 			}
-			// $stmt->execute();
-			// foreach ($array as $key => $item)
-			// 	{
-			// 		foreach($item as $item_key => $value)
-			// 	// Include anchor tag and link to perform GET request, according to $key 
-			// 		echo '<p> <a href=' . "?remove=$item_key" . '>Complete</a> - ' . "$value</p>";
-			// 	}
-
 		}
 
 
@@ -114,24 +69,6 @@ if (isset($_POST['additem']))
 		// }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -158,125 +95,7 @@ if (isset($_GET['remove']))
 
 }
 
-
-
 //===========================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (count($_FILES) > 0 && $_FILES['file1']['error'] === UPLOAD_ERR_OK) 
-// {
-// 	if($_FILES['file1']['type'] === 'text/plain')
-// 	{
-//     // Set the destination directory for uploads
-
-//     $upload_dir = '/vagrant/sites/planner.dev/public/uploads/';
-
-//     // Grab the filename from the uploaded file by using basename
-
-//     $filename = basename($_FILES['file1']['name']);
-
-
-//     // Create the saved filename using the file's original name and our upload directory
-
-//     $saved_filename = $upload_dir . $filename;
-
-//     // Move the file from the temp location to our uploads directory
-
-//     move_uploaded_file($_FILES['file1']['tmp_name'], $saved_filename);
-    
-//     $uploadedList = $instance_of_Filestore->write($saved_filename);
-
-//     $new_array = array_merge($array, $uploadedList);
-
-//     $instance_of_Filestore->write ($new_array);
-// 	}
-// 	else
-// 	{
-// 		echo "ERROR must be a text/plain file ONLY";
-// 	}
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Loop through array $array and output key => value pairs
-// if(isset($errorMessage))
-// {
-// 	echo $errorMessage;
-// }
-
-
-// $remove_item = 'cheese';
-
-
-
-
-
 
 if(isset($array))
 {
@@ -288,41 +107,17 @@ if(isset($array))
 }
 
 	?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 <html>
 <head>
 	<title>Todo List App</title>
 	<title>National Parks</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
- 
-		<h2>List of array: </h2>
-		 
+		<h2>List of array: </h2> 
 		<ul>
-		 
 		 <!-- Form to allow array to be added -->
 			<form name="additem" method="POST" action="/todo_list_sql.php">
 		 
@@ -333,15 +128,11 @@ if(isset($array))
 			</form>
 		<!-- Update your todo list by adding a form to allow a file to be uploaded. When a file is uploaded, move it to the uploads folder -->
 		<!-- 	<form name="uploaditem" method="POST" enctype="multipart/form-data" action="/todo_list_sql.php">
-
 			<label for="file1">Upload Item: </label>
 			<input type="file" id="file1" name="file1">
 			<br>
 			<button value="submit">Upload Item</button> -->
-
-
 		</ul>
-
 			<div class="btn-toolbar">
 				<div class="btn-group">
 					<?php if($offset != 0):?>
@@ -356,8 +147,6 @@ if(isset($array))
 					<?endif;?>
 				</div>
 			</div>
-	
-<!-- ploads directory (see example in this lesson) and process the file, adding new todos to your existing todo list. -->
-
+<!-- uploads directory (see example in this lesson) and process the file, adding new todos to your existing todo list. -->
 </body>
 </html>
